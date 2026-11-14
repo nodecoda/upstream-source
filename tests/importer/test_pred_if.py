@@ -92,7 +92,7 @@ class Emitter(unittest.TestCase):
                     "--out", str(inc))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             text = inc.read_text()
-        self.assertIn(".coreMinScalar(", text)
+        self.assertIn(".minScalarIf(", text)
         self.assertIn("getSizeInBits().getKnownMinValue() <= 1024", text)
 
 

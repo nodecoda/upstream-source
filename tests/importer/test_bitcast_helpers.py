@@ -98,7 +98,7 @@ class Emitter(unittest.TestCase):
             r = run("gen", str(src), "--emit=inc", "--out", str(inc))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             text = inc.read_text()
-        self.assertIn(".coreBitcastToType(", text)
+        self.assertIn(".bitcastIf(", text)
         self.assertIn("LLT::integer(", text)
         self.assertIn("LLT::scalarOrVector(ElementCount::getFixed(", text)
 

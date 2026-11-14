@@ -90,7 +90,7 @@ class Emitter(unittest.TestCase):
                     "--out", str(inc))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             text = inc.read_text()
-        self.assertIn(".coreNarrowTo(", text)
+        self.assertIn(".narrowScalarIf(", text)
         self.assertIn("LLT::integer(((Query.MMODescrs[0]).MemoryTy)", text)
         self.assertIn("MemoryTy.isScalar()", text)
 

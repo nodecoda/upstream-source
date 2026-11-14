@@ -150,7 +150,7 @@ class Emitter(unittest.TestCase):
             r = run("gen", str(src), "--emit=inc", "--out", str(inc))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             text = inc.read_text()
-        self.assertIn(".coreWidenTo(", text)
+        self.assertIn(".widenScalarIf(", text)
         self.assertIn("getScalarType()", text)
         self.assertIn("std::max(llvm::PowerOf2Ceil(", text)
 

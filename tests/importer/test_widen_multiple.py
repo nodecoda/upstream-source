@@ -66,15 +66,15 @@ class Semantics(unittest.TestCase):
 
 
 class Emitter(unittest.TestCase):
-    def test_inc_calls_the_core_shift(self):
+    def test_inc_calls_the_upstream_shift(self):
         with tempfile.TemporaryDirectory() as d:
             src, inc = Path(d) / "t.gisel", Path(d) / "t.inc"
             src.write_text(SOURCE)
             r = run("gen", str(src), "--emit=inc", "--out", str(inc))
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             text = inc.read_text()
-        self.assertIn("coreWidenScalarToNextMultipleOf(", text)
-        self.assertIn(", 0, 32)", text)
+        self.assertIn("widenScalarToNextMultipleOf(", text)
+        self.assertIn("ToNextMultipleOf(0, 32)", text)
 
 
 class Importer(unittest.TestCase):
